@@ -1,0 +1,121 @@
+<h3>Workout</h3>
+<form #detailsForm="ngForm">
+
+<div class="form-group">
+  <label>
+    Workout Name
+    <span class="text-danger">*</span>
+  </label>
+  <input type="text"
+  placeholder="Workout Name"
+  class="form-control"
+  required
+  name="name"
+  #name="ngModel"
+  [(ngModel)]="workout.name">
+</div>
+<div class="text-danger"
+[hidden]="name.valid || name.pristine">Required Field</div>
+
+<div class="form-group">
+    <label>
+      Workout Description
+      <span class="text-danger">*</span>
+    </label>
+    <input type="text"
+    placeholder="Workout Description"
+    class="form-control"
+    required
+    name="description"
+    #description="ngModel"
+    [(ngModel)]="workout.description">
+  </div>
+  <div class="text-danger"
+  [hidden]="description.valid || description.pristine">Required Field</div>
+  
+
+  <div class="form-group">
+      <label>
+        Workout Duration
+        <span class="text-danger">*</span>
+      </label>
+      <input type="text"
+      placeholder="Workout Duration"
+      class="form-control"
+      required
+      name="duration"
+      #duration="ngModel"
+      [(ngModel)]="workout.duration">
+    </div>
+    <div class="text-danger"
+    [hidden]="duration.valid || duration.pristine">Required Field</div>
+
+    <div class="form-group">
+        <label>
+         Workout image URL
+         <span class="text-danger">*</span>
+        </label>
+        <input type="text"
+        placeholder="Workout image"
+        class="form-control"
+        required
+        name="exercises"
+        #exercises="ngModel"
+        [(ngModel)]="workout.exercises">
+      </div>
+      <div class="text-danger"
+      [hidden]="exercises.valid || exercises.pristine">Required Field</div>
+
+   <!-- <ng-container ngModelGroup="exercises"> -->
+      <!-- <div class="form-group">
+          <label>
+            Exercise description
+          </label>
+          <input type="text"
+          placeholder="Workout Exercises"
+          class="form-control"
+          required
+          name="description"
+          [ngModel]="workout.exercises?.description">
+        </div>
+
+        <div class="form-group">
+            <label>
+              Exercise duration
+            </label>
+            <input type="text"
+            placeholder="Workout Duration"
+            class="form-control"
+            required
+            name="duration"
+            [ngModel]="workout.exercises?.duration">
+          </div>
+
+          <div class="form-group">
+              <label>
+               URL Exercise image
+              </label>
+              <input type="text"
+              placeholder="Workout image"
+              class="form-control"
+              required
+              name="image"
+              [ngModel]="workout.exercises?.image">
+            </div>
+          </ng-container> -->
+ 
+      <button class="btn btn-success"
+      [disabled]="detailsForm.form.pristine || !detailsForm.form.valid"
+      (click)="saveWorkout()">
+    Save
+    </button>
+
+    <button class="btn btn-primary m-3"
+    *ngIf="addNewMode"
+    (click)="goBack()"
+>Back</button>
+
+<button class="btn btn-success m-3"
+(click)="detailsForm.reset()"
+>Reset</button>
+</form>

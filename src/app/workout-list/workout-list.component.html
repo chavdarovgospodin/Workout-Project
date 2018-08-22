@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-8">
+    <h1>
+      {{ title }}
+    </h1>
+
+
+
+    <div class="list-group">
+      <a  *ngFor="let workout of workouts" class="list-group-item list-group-item-action" (click)="onSelectedWorkout(workout._id)"
+        [class.active]="workout === selectedWorkout">
+        <!-- <div class="col-sm-4 col-md-3 col-lg-2">
+            <div class="actions">
+            <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="deleteModal">Are you sure?</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                     <p> Are you sure you want to delete 's information?</p>
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="deleteWorkout(workout._id);reload()">Delete</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        <!-- <button class="close ml-5 text-danger p-1" data-toggle="modal" data-target="#deleteModal">&times;</button> -->
+        <button class="close ml-5 text-danger p-1" (click)="deleteWorkout(workout._id)">&times;</button>
+        <h4>Workout name: <span class="badge badge-dark">{{workout.name}} </span></h4>
+        <h5>Workout description: <span class="badge badge-dark">{{workout.description}}</span></h5>
+        <h5>Workout duration: <span class="badge badge-dark">{{workout.duration}}</span></h5>
+            <h5 ><span>Workout image</span> <br> <span><img *ngIf="workout.exercises" class="img-thumbnail" style="width:170px; height:170px;" src="{{workout.exercises}}" alt="Exercise image"></span></h5>
+      </a>
+      
+    </div>
+    <a class="btn btn-primary m-1" routerLink="/add-new">Create Workout</a>
+  </div>
+
+  
+
+  <div class="col-sm-4">
+    <app-workout-details *ngIf="selectedWorkout" [selected-workout]="selectedWorkout" (workoutUpdated)="getWorkouts()"></app-workout-details>
+  </div>
+</div>
